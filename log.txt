@@ -1,0 +1,28 @@
+C============================= test session starts =============================
+platform win32 -- Python 3.9.4, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
+rootdir: C:\Users\v.glagolev\PycharmProjects\pythonProject1
+collected 1 item
+
+Test_MT.py E
+
+=================================== ERRORS ====================================
+_________________ ERROR at setup of TestEOS.test_eos_enforta __________________
+
+    @pytest.fixture(autouse=True, scope="session")
+    def begin ():
+>       print(f"{NowDate()}  \U0001f4e3 :  \u0410\u0432\u0442\u043e\u0442\u0435\u0441\u0442\u044b \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u044b\U0001f4f1")
+
+Test_MT.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <encodings.cp1251.IncrementalEncoder object at 0x000002269C773AF0>
+input = '14-01-2022 13:48:12  \U0001f4e3 :  \u0410\u0432\u0442\u043e\u0442\u0435\u0441\u0442\u044b \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u044b\U0001f4f1', final = False
+
+    def encode(self, input, final=False):
+>       return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E       UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4e3' in position 21: character maps to <undefined>
+
+..\..\AppData\Local\Programs\Python\Python39\lib\encodings\cp1251.py:19: UnicodeEncodeError
+=========================== short test summary info ===========================
+ERROR Test_MT.py::TestEOS::test_eos_enforta - UnicodeEncodeError: 'charmap' c...
+============================== 1 error in 0.37s ===============================

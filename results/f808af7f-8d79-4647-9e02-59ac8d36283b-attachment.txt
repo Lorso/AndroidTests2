@@ -1,0 +1,37 @@
+[swscaler @ 0000028763280000] Warning: data is not aligned! This can lead to a speed loss
+Exception in thread image2video:
+Traceback (most recent call last):
+  File "C:\Users\Tester\AppData\Local\Programs\Python\Python37\lib\threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Tester\AppData\Local\Programs\Python\Python37\lib\threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\uiautomator2\screenrecord.py", line 107, in _run
+    for im in _iter:
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\uiautomator2\screenrecord.py", line 80, in _pipe_resize
+    for im in image_iter:
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\uiautomator2\screenrecord.py", line 87, in _pipe_convert
+    for raw in raw_iter:
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\uiautomator2\screenrecord.py", line 93, in _pipe_limit
+    for raw in raw_iter:
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\uiautomator2\screenrecord.py", line 48, in _iter_minicap
+    msg = ws.recv()
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_core.py", line 354, in recv
+    opcode, data = self.recv_data()
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_core.py", line 377, in recv_data
+    opcode, frame = self.recv_data_frame(control_frame)
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_core.py", line 396, in recv_data_frame
+    frame = self.recv_frame()
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_core.py", line 432, in recv_frame
+    return self.frame_buffer.recv_frame()
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_abnf.py", line 372, in recv_frame
+    self.recv_header()
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_abnf.py", line 320, in recv_header
+    header = self.recv_strict(2)
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_abnf.py", line 407, in recv_strict
+    bytes_ = self.recv(min(16384, shortage))
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_core.py", line 516, in _recv
+    return recv(self.sock, bufsize)
+  File "c:\users\tester\pycharmprojects\androidtests\venv\lib\site-packages\websocket\_socket.py", line 125, in recv
+    "Connection is already closed.")
+websocket._exceptions.WebSocketConnectionClosedException: Connection is already closed.
+

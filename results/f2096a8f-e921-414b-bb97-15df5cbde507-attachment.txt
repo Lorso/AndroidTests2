@@ -1,0 +1,1 @@
+[swscaler @ 000002022c610000] Warning: data is not aligned! This can lead to a speed loss
