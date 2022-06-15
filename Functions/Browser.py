@@ -48,9 +48,15 @@ def BrowserChromeExit(d):
     if button01.exists:
         button01.click()
         sleep(1)
-    if button02.exists:
-        button02.click()
+    else:
+        d.click(0.837, 0.091)
+    if d.xpath('//*[@resource-id="com.android.chrome:id/tab_switcher_toolbar"]/android.widget.LinearLayout[2]').exists:
+        d.xpath('//*[@resource-id="com.android.chrome:id/tab_switcher_toolbar"]/android.widget.LinearLayout[2]').click()
         sleep(1)
+    elif button02.exists:
+        button02.click()
+    sleep(1)
+
     if button03.exists:
         button03.click()
         sleep(1)
@@ -59,4 +65,7 @@ def BrowserChromeExit(d):
         sleep(1)
 
 
-    d.press("home")
+
+
+
+

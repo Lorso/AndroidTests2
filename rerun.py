@@ -5,6 +5,11 @@ import time
 
 k=0
 while k<1000:
- Popen('pytest --alluredir results Test_MT.py')
- time.sleep(5400)
+ Popen('pytest -s Test_MT_Ident.py')
+ time.sleep(4000)
+ Popen('pytest -s Test_MT_Auth.py')
+ time.sleep(3600)
  k+=1
+
+
+

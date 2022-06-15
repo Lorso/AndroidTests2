@@ -5,7 +5,7 @@ import paramiko
 from Functions.TelegramApi import Send_File
 from Functions.TelegramApi import SendMessage
 from Functions.DataName import NowDate
-from Tests.Tests_frame_version import AutoTest
+from Tests.Tests_Auth import AutoTest
 
 
 #from Tesdroid import startIos
@@ -30,7 +30,7 @@ def startIos():
 def job():
 
     startIos()
-    import Test_MT
+    import Test_MT_Auth
 #schedule.every().day.at("10:34").do(job)
 
 

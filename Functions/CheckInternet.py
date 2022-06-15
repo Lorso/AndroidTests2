@@ -8,7 +8,7 @@ from Functions.Browser import BrowserChromeExit
 
 def CheckInternet (d, DevicesName):
     d.press("home")
-    sleep(2)
+    sleep(10)
 
     # t0 = time.time()
     # d.shell("am start -a android.intent.action.VIEW  https://gb.ru/")
@@ -26,7 +26,7 @@ def CheckInternet (d, DevicesName):
     if button3.exists: d(resourceId="com.android.chrome:id/positive_button").click()
 
     lenta = d.xpath('//*[@text="Войти"]')
-    lenta.wait(30)
+    lenta.wait(35)
     check2 = lenta.exists
     t3 = time.time() - t2
 

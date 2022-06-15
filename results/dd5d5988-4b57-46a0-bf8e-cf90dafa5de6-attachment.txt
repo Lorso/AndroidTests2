@@ -1,4 +1,0 @@
-[W 220504 10:58:04 __init__:218] [pid:8928] atx-agent has something wrong, auto recovering
-[I 220504 10:58:04 __init__:362] [pid:8928] [be11611b] wait-for-device, time left(3.0s)
-[I 220504 10:58:05 __init__:362] [pid:8928] [be11611b] wait-for-device, time left(2.0s)
-[I 220504 10:58:06 __init__:362] [pid:8928] [be11611b] wait-for-device, time left(1.0s)

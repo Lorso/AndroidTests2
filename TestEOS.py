@@ -2,7 +2,7 @@ import pytest
 from Functions.TelegramApi import Send_File
 from Functions.TelegramApi import SendMessage
 from Functions.DataName import NowDate
-from Tests.Tests_frame_version import AutoTest
+from Tests.Tests_Auth import AutoTest
 
 # XiaomiRedmiNote9
 number = "a3f47191"
