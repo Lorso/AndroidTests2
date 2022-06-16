@@ -1,6 +1,6 @@
 import pytest
-from Functions.TelegramApi import Send_File
-from Functions.TelegramApi import SendMessage
+from Functions.TelegramApi import Send_File2
+from Functions.TelegramApi import SendMessage2
 from Functions.DataName import NowDate
 from Tests.Tests_Ident import AutoTest
 import allure
@@ -36,13 +36,13 @@ name = 'OnePlus 9R'
 @pytest.fixture(autouse=True, scope="session")
 def begin ():
     print(f"{NowDate()}  📣 : Тесты запущены📱")
-    SendMessage(f"Тесты Идент Android запущены 📱")  # Отправка сообщения в телеграмм канал
+    SendMessage2(f"Тесты Идент Android запущены 📱")  # Отправка сообщения в телеграмм канал
     print(f"_____________________________________________________________")
     f = open('logs/buttonClick.txt', 'w', encoding='utf-8')
     f.close()
     yield
-    SendMessage(f"✅Тесты Идент Android завершены 📴")  # Отправка сообщения в телеграмм канал
-    Send_File("logs/buttonClick.txt")
+    SendMessage2(f"✅Тесты Идент Android завершены 📴")  # Отправка сообщения в телеграмм канал
+    Send_File2("logs/buttonClick.txt")
     print(f"{NowDate()}  📣 :Android  Тесты завершены📱")
 
 

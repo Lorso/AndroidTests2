@@ -12,8 +12,8 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
     from Functions.OnePlus9R.resetwifi import resetwifi
 
     from Functions.DataName import NowDate
-    from Functions.TelegramApi import SendMessage
-    from Functions.TelegramApi import Send_screencast
+    from Functions.TelegramApi import SendMessage2
+    from Functions.TelegramApi import Send_screencast2
     from Functions.LockDisplay import Lock
     from Functions.Sumsung import Connect_WiFi
     from Functions.pgconnect import addResult
@@ -109,7 +109,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                         sleep(3)
                         if d(resourceId="android:id/title", text="Конфиденциальность").exists():
                             d(resourceId="android:id/title", text="Конфиденциальность").click()
-                        sleep(2)
+                        sleep(1)
                         if d(resourceId="android:id/text1", text="MAC-адрес устройства").exists():
                             d(resourceId="android:id/text1", text="MAC-адрес устройства").click()
                             sleep(10)
@@ -141,7 +141,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                     if d(text="Подключено").exists:
                         print(f"{NowDate()}  Сессия не убита")
                         f.write(f"{NowDate()}  Сессия не убита\n")
-                        SendMessage(f"{devices_name} 🔥 {ssid}: Сессия не убита")
+                        SendMessage2(f"{devices_name} 🔥 {ssid}: Сессия не убита")
                         err_name = 'Error: No kill session'
                         check_err = 1
                         return False
@@ -149,7 +149,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                     if d(text="Без доступа к Интернету").exists or d(text="Нет подключения к Интернету").exists:
                         print(f"{NowDate()}  ТД без доступа к Интернету")
                         f.write(f"{NowDate()}  ТД без доступа к Интернету\n")
-                        SendMessage(f"{devices_name} 🔥 {ssid}: ТД без доступа к Интернету")
+                        SendMessage2(f"{devices_name} 🔥 {ssid}: ТД без доступа к Интернету")
                         check_err = 1
                         err_name = 'Error: ТД без доступа в Интернет, на Идент не попасть'
                         return False
@@ -163,7 +163,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                     if d(text="Сохранено").exists:
                         print(f"{NowDate()}  Нет ассоциации с ТД")
                         f.write(f"{NowDate()}  Нет ассоциации с ТД\n")
-                        SendMessage(f"{devices_name} 🔥 {ssid}: Нет ассоциации с ТД")
+                        SendMessage2(f"{devices_name} 🔥 {ssid}: Нет ассоциации с ТД")
                         check_err = 1
                         err_name = 'Error: No Association'
                         return False
@@ -171,7 +171,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                     else:
                         print(f"{NowDate()}  SSID не найден")
                         f.write(f"{NowDate()}  SSID не найден\n")
-                        SendMessage(f"{devices_name} 🔥 {ssid}: SSID не найден")
+                        SendMessage2(f"{devices_name} 🔥 {ssid}: SSID не найден")
                         check_err = 1
                         err_name = 'Error: No SSID'
                         return False
@@ -188,7 +188,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
             else:
                 print(f"{NowDate()}  Captive не отработал")
                 f.write(f"{NowDate()}  Captive не отработал\n")
-                SendMessage(f"{devices_name} 🔥 {ssid}: Captive не отработал")
+                SendMessage2(f"{devices_name} 🔥 {ssid}: Captive не отработал")
                 check_err = 1
                 err_name = 'Error: No Captive'
                 return False
@@ -211,7 +211,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
             button_x2 = d.xpath(
                 '//*[@text="Авторизация Wi-Fi"]/android.view.View[2]/android.view.View[1]/android.view.View[1]')
             # button_x2 = d.xpath('//*/android.view.View[1]/android.view.View[2]/android.view.View[1]/android.view.View[1]')
-            button_x3 = d.xpath('//*[@text="Wi-Fi.ru"]/android.view.View[3]/android.view.View[1]')
+            button_x3 = d.xpath('//*[@text="Регистрация"]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.widget.TextView[1]')
 
             # Идентификация
             while not (final_check1.exists or final_check2.exists or final_check3.exists or button_x1.exists or button_x2.exists or button_x3.exists):
@@ -246,7 +246,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                         if d(text='При подтверждении номера произошла ошибка').exists:
                             print(f"{NowDate()}  При подтверждении номера произошла ошибка")
                             f.write(f"{NowDate()}  При подтверждении номера произошла ошибка\n")
-                            SendMessage(f"{devices_name} 🔥 {ssid}: При подтверждении номера произошла ошибка")
+                            SendMessage2(f"{devices_name} 🔥 {ssid}: При подтверждении номера произошла ошибка")
                             check_err = 1
                             err_name = 'Error: При подтверждении номера произошла ошибка'
                             return False
@@ -267,19 +267,39 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                               text="Изменить номер и позвонить").click()  # скопируется номер
                             sleep(4)
                             #### Вытащит последние 4 цифры
-                            if d(text='+7 985 012-21-16').exists or d(text='+7 985 012-21-74').exists:
-                                d.click(0.742, 0.484)
+                            if d(text='+7 985 012-13-22').exists:
+                                d.double_click(0.298, 0.972)
                                 time.sleep(1)
-                                d.click(0.931, 0.486)
+                                d.click(0.723, 0.969)
                                 time.sleep(1)
-                                d.click(0.645, 0.479)
+                                d.click(0.057, 0.458)
                                 time.sleep(1)
-                                for i in range(5):
-                                    d.double_click(0.931, 0.486)
-                                    time.sleep(1)
-                                d.click(0.931, 0.486)
+                                d.click(0.557, 0.316)
                                 time.sleep(1)
-                                d.double_click(0.489, 0.476)
+                                d.send_keys("1322", clear=True)
+                                # Вставка когда
+                            if d(text='+7 985 012-21-16').exists:
+                                d.double_click(0.298, 0.972)
+                                time.sleep(1)
+                                d.click(0.723, 0.969)
+                                time.sleep(1)
+                                d.click(0.057, 0.458)
+                                time.sleep(1)
+                                d.click(0.557, 0.316)
+                                time.sleep(1)
+                                d.send_keys("2116", clear=True)
+
+                            if d(text='+7 985 012-21-74').exists:
+                                d.double_click(0.298, 0.972)
+                                time.sleep(1)
+                                d.click(0.723, 0.969)
+                                time.sleep(1)
+                                d.click(0.057, 0.458)
+                                time.sleep(1)
+                                d.click(0.557, 0.316)
+                                time.sleep(1)
+                                d.send_keys("2174", clear=True)
+
                             else:
                                 d.click(0.607, 0.484)
                                 sleep(1)
@@ -317,14 +337,14 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Неправильно введён код")
                                     f.write(f"{NowDate()}  Неправильно введён код\n")
-                                    SendMessage(f"{devices_name}: 🔥 {ssid} Неправильно введён код")
+                                    SendMessage2(f"{devices_name}: 🔥 {ssid} Неправильно введён код")
                                     err_name = 'Error: Incorrect Code'
                                     return False
                                 else:
                                     check_err = 1
                                     print(f"{NowDate()}  Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
                                     f.write(f"{NowDate()}  Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась\n")
-                                    SendMessage(f"{devices_name}: 🔥 {ssid} Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
+                                    SendMessage2(f"{devices_name}: 🔥 {ssid} Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
                                     err_name = 'Error: Не прогрузилась кнопка ВОЙТИ В ИНТЕРНЕТ'
                                     return False
 
@@ -347,7 +367,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Вместо портала, страница авторизации")
                                     f.write(f"{NowDate()}  Вместо портала, страница авторизации\n")
-                                    SendMessage(f"{devices_name} 🔥 {ssid}: Вместо портала, страница авторизации")
+                                    SendMessage2(f"{devices_name} 🔥 {ssid}: Вместо портала, страница авторизации")
                                     sleep(12)
                                     err_name = 'Error: Вместо портала, страница авторизации'
                                     return False
@@ -355,7 +375,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Портал не загрузился")
                                     f.write(f"{NowDate()}  Портал не загрузился\n")
-                                    SendMessage(f"{devices_name} 🔥 {ssid}: Портал не загрузился")
+                                    SendMessage2(f"{devices_name} 🔥 {ssid}: Портал не загрузился")
                                     sleep(12)
                                     err_name = 'Error: Портал не прогрузился'
                                     return False
@@ -364,7 +384,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                             check_err = 1
                             print(f"{NowDate()}  Звонок не поступил")
                             f.write(f"{NowDate()}  Звонок не поступил\n")
-                            SendMessage(f"{devices_name}: 🔥 {ssid} Звонок не поступил")
+                            SendMessage2(f"{devices_name}: 🔥 {ssid} Звонок не поступил")
                             err_name = 'Error: No Call'
                             return False
 
@@ -447,20 +467,24 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Неправильно введён код")
                                     f.write(f"{NowDate()}  Неправильно введён код\n")
-                                    SendMessage(f"{devices_name}: 🔥 {ssid} Неправильно введён код")
+                                    SendMessage2(f"{devices_name}: 🔥 {ssid} Неправильно введён код")
                                     err_name = 'Error: Incorrect Code'
                                     return False
                                 else:
                                     check_err = 1
                                     print(f"{NowDate()}  Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
                                     f.write(f"{NowDate()}  Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась\n")
-                                    SendMessage(f"{devices_name}: 🔥 {ssid}Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
+                                    SendMessage2(f"{devices_name}: 🔥 {ssid}Кнопка «ВОЙТИ В ИНТЕРНЕТ не прогрузилась")
                                     err_name = 'Error: Не прогрузилась кнопка ВОЙТИ В ИНТЕРНЕТ'
                                     return False
 
                             if d.xpath('//*[@text="Регистрация"]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.widget.TextView[1]').exists:
                                 d.xpath(
                                     '//*[@text="Регистрация"]/android.view.View[2]/android.view.View[1]/android.view.View[2]/android.widget.TextView[1]').click()
+                                print(f"{NowDate()}  Нажат крестик Рекламы")
+                                f.write(f"{NowDate()}  Нажат крестик Рекламы\n")
+                            if button_x3.exists:
+                                button_x3.click()
                                 print(f"{NowDate()}  Нажат крестик Рекламы")
                                 f.write(f"{NowDate()}  Нажат крестик Рекламы\n")
 
@@ -478,7 +502,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Вместо портала, страница авторизации")
                                     f.write(f"{NowDate()}  Вместо портала, страница авторизации\n")
-                                    SendMessage(f"{devices_name} 🔥 {ssid}: Вместо портала, страница авторизации")
+                                    SendMessage2(f"{devices_name} 🔥 {ssid}: Вместо портала, страница авторизации")
                                     sleep(12)
                                     err_name = 'Error: Вместо портала, страница авторизации'
                                     return False
@@ -486,7 +510,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                                     check_err = 1
                                     print(f"{NowDate()}  Портал не загрузился")
                                     f.write(f"{NowDate()}  Портал не загрузился\n")
-                                    SendMessage(f"{devices_name} 🔥 {ssid}: Портал не загрузился")
+                                    SendMessage2(f"{devices_name} 🔥 {ssid}: Портал не загрузился")
                                     sleep(12)
                                     err_name = 'Error: Портал не прогрузился'
                                     return False
@@ -495,7 +519,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                             check_err = 1
                             print(f"{NowDate()}  SMS не пришла")
                             f.write(f"{NowDate()}  SMS не пришла\n")
-                            SendMessage(f"{devices_name}: 🔥 {ssid} SMS не пришла")
+                            SendMessage2(f"{devices_name}: 🔥 {ssid} SMS не пришла")
                             err_name = 'Error: No SMS'
                             return False
 
@@ -503,7 +527,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                     check_err = 1
                     print(f"{NowDate()}  Страница идентификации не загрузилась")
                     f.write(f"{NowDate()}  Страница идентификации не загрузилась\n")
-                    SendMessage(f"{devices_name} 🔥 {ssid}: Страница идентификации не загрузилась")
+                    SendMessage2(f"{devices_name} 🔥 {ssid}: Страница идентификации не загрузилась")
                     sleep(12)
                     err_name = 'Error: Страница идентификации не загрузилась'
                     return False
@@ -516,7 +540,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
                 print("\033[31m{}\033[0m".format(
                     f"{NowDate()} Доступа в интернет нет. Скрипт завершен "))
                 f.write(f"{NowDate()} Доступа в интернет нет. Скрипт завершен \n")
-                SendMessage(f"{devices_name} 🔥 {ssid}: Доступа в интернет нет")
+                SendMessage2(f"{devices_name} 🔥 {ssid}: Доступа в интернет нет")
                 check_err = 1
                 err_name = 'Error: No access Internet'
                 return False
@@ -524,7 +548,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
 
 
             # -- Финиш, если дойдет, тест пройден успешно
-            SendMessage(f"{devices_name}: 📣 {ssid}: Идент Тест успешно пройден ✅ ")
+            SendMessage2(f"{devices_name}: 📣 {ssid}: Идент Тест успешно пройден ✅ ")
             print("\033[32m{}\033[0m".format(f"{NowDate()}  Идент Тест пройден ✅"))
             f.write(f"{NowDate()}  Идент Тест пройден ✅ \n")
             # result 0 - успешно \ 1 - ошибка \ 2 - сессия не убита \ 3 - падение теста
@@ -535,7 +559,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
             if succes==0 and check_err==0:
                 print(f"{NowDate()}  Unknown Error")
                 f.write(f"{NowDate()}  Unknown Error\n")
-                SendMessage(f"{devices_name} 🔥 {ssid}: Unknown Error")
+                SendMessage2(f"{devices_name} 🔥 {ssid}: Unknown Error")
                 check_err =1
                 err_name = 'Error: Unknown'
 
@@ -566,7 +590,7 @@ def AutoTest(ser, mac, devices_name, ssid, name_video):
             time_finish = time() - time_start
             print(f"Время работы скрипта: {round(time_finish, 2)} сек")
             if check_err == 1:
-                Send_screencast(f"screencasts/{devices_name}_{name_video}.mp4", f'Идентификация {devices_name}\n{ssid}')
+                Send_screencast2(f"screencasts/{devices_name}_{name_video}.mp4", f'Идентификация {devices_name}\n{ssid}')
             print(f"_________________________________________________________")
             f.write(f"{id, ntest, dt, ssid, type, check_err, err_name}\n")
             f.write(f"_______________________________________________________\n")
